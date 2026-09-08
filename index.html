@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reloj Digital - Múltiples Zonas Horarias</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>⏰ Reloj Digital Mundial</h1>
+        <p class="subtitle">Hora actual en diferentes zonas horarias</p>
+        
+        <div class="clocks-grid">
+            <!-- America/New_York -->
+            <div class="clock-card">
+                <div class="timezone-name">🗽 Nueva York (EST)</div>
+                <div class="clock-display" id="clock-ny">00:00:00</div>
+                <div class="timezone-offset" id="offset-ny"></div>
+            </div>
+            
+            <!-- Europe/London -->
+            <div class="clock-card">
+                <div class="timezone-name">🇬🇧 Londres (GMT)</div>
+                <div class="clock-display" id="clock-london">00:00:00</div>
+                <div class="timezone-offset" id="offset-london"></div>
+            </div>
+            
+            <!-- Europe/Paris -->
+            <div class="clock-card">
+                <div class="timezone-name">🇫🇷 París (CET)</div>
+                <div class="clock-display" id="clock-paris">00:00:00</div>
+                <div class="timezone-offset" id="offset-paris"></div>
+            </div>
+            
+            <!-- Asia/Tokyo -->
+            <div class="clock-card">
+                <div class="timezone-name">🗾 Tokio (JST)</div>
+                <div class="clock-display" id="clock-tokyo">00:00:00</div>
+                <div class="timezone-offset" id="offset-tokyo"></div>
+            </div>
+            
+            <!-- Asia/Dubai -->
+            <div class="clock-card">
+                <div class="timezone-name">🏙️ Dubái (GST)</div>
+                <div class="clock-display" id="clock-dubai">00:00:00</div>
+                <div class="timezone-offset" id="offset-dubai"></div>
+            </div>
+            
+            <!-- Australia/Sydney -->
+            <div class="clock-card">
+                <div class="timezone-name">🦘 Sídney (AEDT)</div>
+                <div class="clock-display" id="clock-sydney">00:00:00</div>
+                <div class="timezone-offset" id="offset-sydney"></div>
+            </div>
+            
+            <!-- America/Mexico_City -->
+            <div class="clock-card">
+                <div class="timezone-name">🇲🇽 Ciudad de México (CST)</div>
+                <div class="clock-display" id="clock-mexico">00:00:00</div>
+                <div class="timezone-offset" id="offset-mexico"></div>
+            </div>
+            
+            <!-- America/Sao_Paulo -->
+            <div class="clock-card">
+                <div class="timezone-name">🇧🇷 São Paulo (BRT)</div>
+                <div class="clock-display" id="clock-sao-paulo">00:00:00</div>
+                <div class="timezone-offset" id="offset-sao-paulo"></div>
+            </div>
+            
+            <!-- Asia/Bangkok -->
+            <div class="clock-card">
+                <div class="timezone-name">🇹🇭 Bangkok (ICT)</div>
+                <div class="clock-display" id="clock-bangkok">00:00:00</div>
+                <div class="timezone-offset" id="offset-bangkok"></div>
+            </div>
+            
+            <!-- Africa/Cairo -->
+            <div class="clock-card">
+                <div class="timezone-name">🇪🇬 Cairo (EET)</div>
+                <div class="clock-display" id="clock-cairo">00:00:00</div>
+                <div class="timezone-offset" id="offset-cairo"></div>
+            </div>
+            
+            <!-- Pacific/Auckland -->
+            <div class="clock-card">
+                <div class="timezone-name">🇳🇿 Auckland (NZDT)</div>
+                <div class="clock-display" id="clock-auckland">00:00:00</div>
+                <div class="timezone-offset" id="offset-auckland"></div>
+            </div>
+            
+            <!-- Asia/Singapore -->
+            <div class="clock-card">
+                <div class="timezone-name">🇸🇬 Singapur (SGT)</div>
+                <div class="clock-display" id="clock-singapore">00:00:00</div>
+                <div class="timezone-offset" id="offset-singapore"></div>
+            </div>
+        </div>
+        
+        <div class="local-time">
+            <h2>Tu hora local</h2>
+            <div class="local-clock" id="local-clock">00:00:00</div>
+            <div class="local-date" id="local-date"></div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
