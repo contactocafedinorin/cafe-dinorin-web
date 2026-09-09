@@ -1,109 +1,474 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reloj Digital - Múltiples Zonas Horarias</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Café Dinorín - Café Artesanal</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-    <div class="container">
-        <h1>⏰ Reloj Digital Mundial</h1>
-        <p class="subtitle">Hora actual en diferentes zonas horarias</p>
+<body class="bg-[#FAF6F0] text-[#231209]">
+  <header class="fixed top-0 left-0 right-0 z-50 glass-nav border-b border-gold-500/20 text-cream-50 shadow-lg transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
         
-        <div class="clocks-grid">
-            <!-- America/New_York -->
-            <div class="clock-card">
-                <div class="timezone-name">🗽 Nueva York (EST)</div>
-                <div class="clock-display" id="clock-ny">00:00:00</div>
-                <div class="timezone-offset" id="offset-ny"></div>
-            </div>
-            
-            <!-- Europe/London -->
-            <div class="clock-card">
-                <div class="timezone-name">🇬🇧 Londres (GMT)</div>
-                <div class="clock-display" id="clock-london">00:00:00</div>
-                <div class="timezone-offset" id="offset-london"></div>
-            </div>
-            
-            <!-- Europe/Paris -->
-            <div class="clock-card">
-                <div class="timezone-name">🇫🇷 París (CET)</div>
-                <div class="clock-display" id="clock-paris">00:00:00</div>
-                <div class="timezone-offset" id="offset-paris"></div>
-            </div>
-            
-            <!-- Asia/Tokyo -->
-            <div class="clock-card">
-                <div class="timezone-name">🗾 Tokio (JST)</div>
-                <div class="clock-display" id="clock-tokyo">00:00:00</div>
-                <div class="timezone-offset" id="offset-tokyo"></div>
-            </div>
-            
-            <!-- Asia/Dubai -->
-            <div class="clock-card">
-                <div class="timezone-name">🏙️ Dubái (GST)</div>
-                <div class="clock-display" id="clock-dubai">00:00:00</div>
-                <div class="timezone-offset" id="offset-dubai"></div>
-            </div>
-            
-            <!-- Australia/Sydney -->
-            <div class="clock-card">
-                <div class="timezone-name">🦘 Sídney (AEDT)</div>
-                <div class="clock-display" id="clock-sydney">00:00:00</div>
-                <div class="timezone-offset" id="offset-sydney"></div>
-            </div>
-            
-            <!-- America/Mexico_City -->
-            <div class="clock-card">
-                <div class="timezone-name">🇲🇽 Ciudad de México (CST)</div>
-                <div class="clock-display" id="clock-mexico">00:00:00</div>
-                <div class="timezone-offset" id="offset-mexico"></div>
-            </div>
-            
-            <!-- America/Sao_Paulo -->
-            <div class="clock-card">
-                <div class="timezone-name">🇧🇷 São Paulo (BRT)</div>
-                <div class="clock-display" id="clock-sao-paulo">00:00:00</div>
-                <div class="timezone-offset" id="offset-sao-paulo"></div>
-            </div>
-            
-            <!-- Asia/Bangkok -->
-            <div class="clock-card">
-                <div class="timezone-name">🇹🇭 Bangkok (ICT)</div>
-                <div class="clock-display" id="clock-bangkok">00:00:00</div>
-                <div class="timezone-offset" id="offset-bangkok"></div>
-            </div>
-            
-            <!-- Africa/Cairo -->
-            <div class="clock-card">
-                <div class="timezone-name">🇪🇬 Cairo (EET)</div>
-                <div class="clock-display" id="clock-cairo">00:00:00</div>
-                <div class="timezone-offset" id="offset-cairo"></div>
-            </div>
-            
-            <!-- Pacific/Auckland -->
-            <div class="clock-card">
-                <div class="timezone-name">🇳🇿 Auckland (NZDT)</div>
-                <div class="clock-display" id="clock-auckland">00:00:00</div>
-                <div class="timezone-offset" id="offset-auckland"></div>
-            </div>
-            
-            <!-- Asia/Singapore -->
-            <div class="clock-card">
-                <div class="timezone-name">🇸🇬 Singapur (SGT)</div>
-                <div class="clock-display" id="clock-singapore">00:00:00</div>
-                <div class="timezone-offset" id="offset-singapore"></div>
-            </div>
+        <!-- Logo -->
+        <a href="#" class="flex items-center gap-3 group">
+          <div class="w-11 h-11 rounded-full border-2 border-gold-500 flex items-center justify-center bg-coffee-800 group-hover:scale-105 transition-transform">
+            <i class="fa-solid fa-mug-hot text-gold-400 text-lg"></i>
+          </div>
+          <div>
+            <span class="font-serif-title text-2xl font-bold tracking-wide gold-gradient-text block leading-none">Café Dinorín</span>
+            <span class="text-[10px] tracking-widest text-cream-200 uppercase font-medium">Artesanal &amp; Selecto</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+          <a href="#inicio" class="hover:text-gold-400 transition-colors">Inicio</a>
+          <a href="#nosotros" class="hover:text-gold-400 transition-colors">Nosotros</a>
+          <a href="#catalogo" class="hover:text-gold-400 transition-colors">Catálogo</a>
+          <a href="#pedido" class="hover:text-gold-400 transition-colors">Hacer Pedido</a>
+        </nav>
+
+        <!-- Header Actions: Cart & Download ZIP -->
+        <div class="flex items-center gap-3 sm:gap-4">
+          <!-- ZIP Download Button -->
+          <button onclick="downloadProjectZip()" class="hidden sm:flex items-center gap-2 bg-gold-500/10 hover:bg-gold-500/20 text-gold-400 border border-gold-500/40 px-3 py-2 rounded-xl text-xs font-semibold transition-all hover:scale-105" title="Descargar archivos del proyecto en formato ZIP">
+            <i class="fa-solid fa-file-zipper text-gold-400"></i>
+            <span>Descargar ZIP</span>
+          </button>
+
+          <!-- Shopping Cart Button -->
+          <button onclick="toggleCartModal()" class="relative bg-gold-500 hover:bg-gold-600 text-coffee-950 font-bold px-4 py-2.5 rounded-xl flex items-center gap-2 shadow-md hover:shadow-gold-500/20 transition-all hover:scale-105">
+            <i class="fa-solid fa-shopping-bag"></i>
+            <span class="hidden sm:inline">Carrito</span>
+            <span id="cart-badge" class="bg-coffee-950 text-gold-400 text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold">0</span>
+          </button>
+
+          <!-- Mobile Menu Button -->
+          <button onclick="toggleMobileMenu()" class="md:hidden text-cream-100 p-2 hover:text-gold-400">
+            <i class="fa-solid fa-bars text-xl"></i>
+          </button>
         </div>
-        
-        <div class="local-time">
-            <h2>Tu hora local</h2>
-            <div class="local-clock" id="local-clock">00:00:00</div>
-            <div class="local-date" id="local-date"></div>
-        </div>
+      </div>
     </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-coffee-900 border-b border-gold-500/20 px-4 pt-2 pb-6 space-y-3">
+      <a href="#inicio" onclick="toggleMobileMenu()" class="block py-2 text-cream-100 hover:text-gold-400 font-medium">Inicio</a>
+      <a href="#nosotros" onclick="toggleMobileMenu()" class="block py-2 text-cream-100 hover:text-gold-400 font-medium">Nosotros</a>
+      <a href="#catalogo" onclick="toggleMobileMenu()" class="block py-2 text-cream-100 hover:text-gold-400 font-medium">Catálogo</a>
+      <a href="#pedido" onclick="toggleMobileMenu()" class="block py-2 text-cream-100 hover:text-gold-400 font-medium">Hacer Pedido</a>
+      <button onclick="downloadProjectZip(); toggleMobileMenu();" class="w-full flex items-center justify-center gap-2 bg-gold-500/20 text-gold-400 border border-gold-500/40 py-2.5 rounded-xl text-sm font-semibold">
+        <i class="fa-solid fa-file-zipper"></i>
+        <span>Descargar código del sitio en ZIP</span>
+      </button>
+    </div>
+  </header>
+  <section id="inicio" class="relative pt-32 pb-20 md:pt-40 md:pb-28 coffee-gradient-bg text-cream-50 overflow-hidden">
+    <div class="absolute inset-0 hero-pattern opacity-40"></div>
     
-    <script src="script.js"></script>
+    <!-- Decorative Glows -->
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-gold-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid lg:grid-cols-12 gap-12 items-center">
+        
+        <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+          <div class="inline-flex items-center gap-2 bg-gold-500/10 border border-gold-500/30 px-4 py-1.5 rounded-full text-gold-400 text-xs sm:text-sm font-medium">
+            <i class="fa-solid fa-award"></i> Café 100% Arábica Orgánico de Alta Montaña
+          </div>
+
+          <h1 class="font-serif-title text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight">
+            El aroma y carácter único de <span class="gold-gradient-text italic">Café Dinorín</span>
+          </h1>
+
+          <p class="text-cream-200 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed font-light">
+            Cosechado artesanalmente bajo sombra y tostado al punto perfecto. Cada taza de Café Dinorín ofrece notas achocolatadas, cuerpo cremoso y una acidez brillante incomparable.
+          </p>
+
+          <div class="pt-4 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+            <a href="#catalogo" class="w-full sm:w-auto px-8 py-4 bg-gold-500 hover:bg-gold-600 text-coffee-950 font-bold rounded-2xl shadow-lg hover:shadow-gold-500/30 transition-all transform hover:-translate-y-0.5 text-center flex items-center justify-center gap-2">
+              <i class="fa-solid fa-store"></i>
+              <span>Explorar Catálogo</span>
+            </a>
+            <a href="#pedido" class="w-full sm:w-auto px-8 py-4 border-2 border-gold-500/50 hover:border-gold-500 text-cream-100 hover:text-gold-400 font-semibold rounded-2xl transition-all text-center flex items-center justify-center gap-2">
+              <i class="fa-solid fa-paper-plane"></i>
+              <span>Pedido Directo</span>
+            </a>
+          </div>
+
+          <!-- Feature badges -->
+          <div class="pt-8 border-t border-gold-500/20 grid grid-cols-3 gap-4 text-center lg:text-left">
+            <div>
+              <p class="font-serif-title text-gold-400 text-xl font-bold">100%</p>
+              <p class="text-xs text-cream-200">Artesanal</p>
+            </div>
+            <div>
+              <p class="font-serif-title text-gold-400 text-xl font-bold">Tueste</p>
+              <p class="text-xs text-cream-200">Medio / Oscuro</p>
+            </div>
+            <div>
+              <p class="font-serif-title text-gold-400 text-xl font-bold">Envío</p>
+              <p class="text-xs text-cream-200">Garantizado</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Visual / Coffee Bag Illustration Card -->
+        <div class="lg:col-span-5 flex justify-center">
+          <div class="relative w-full max-w-md">
+            <!-- Outer Glow -->
+            <div class="absolute -inset-1 rounded-3xl gold-gradient-bg opacity-30 blur-lg"></div>
+            
+            <div class="relative bg-coffee-900 border border-gold-500/30 rounded-3xl p-8 text-center shadow-2xl overflow-hidden">
+              <div class="absolute top-0 right-0 bg-gold-500 text-coffee-950 text-xs font-bold px-4 py-1.5 rounded-bl-2xl uppercase tracking-wider">
+                Edición Especial
+              </div>
+
+              <!-- Coffee Bag Graphic (SVG representation) -->
+              <div class="py-6 flex justify-center">
+                <div class="w-48 h-64 bg-gradient-to-b from-coffee-800 to-coffee-950 rounded-2xl border-2 border-gold-500/50 shadow-2xl relative p-4 flex flex-col justify-between items-center transform rotate-1 hover:rotate-0 transition-transform duration-300">
+                  <div class="w-full text-center border-b border-gold-500/30 pb-2">
+                    <i class="fa-solid fa-seedling text-gold-400 text-xl"></i>
+                    <p class="font-serif-title font-bold text-gold-400 text-lg">DINORÍN</p>
+                  </div>
+                  <div class="w-20 h-20 rounded-full border-2 border-dashed border-gold-500/40 flex items-center justify-center bg-coffee-900">
+                    <i class="fa-solid fa-mug-hot text-gold-400 text-3xl"></i>
+                  </div>
+                  <div class="w-full text-center bg-coffee-900/80 rounded-xl p-2 border border-gold-500/20">
+                    <p class="text-[11px] font-bold text-gold-300 tracking-widest uppercase">Gourmet Coffee</p>
+                    <p class="text-[9px] text-cream-200">100% Puro de Montaña</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="space-y-1">
+                <p class="font-serif-title text-xl font-bold text-cream-50">Café Dinorín Gourmet</p>
+                <p class="text-sm text-gold-400 font-medium">Tostado fresco bajo pedido</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <section id="nosotros" class="py-16 bg-cream-100 border-y border-cream-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <h2 class="text-xs font-extrabold uppercase tracking-widest text-gold-600 mb-2">Tradición y Calidad</h2>
+        <p class="font-serif-title text-3xl sm:text-4xl font-bold text-coffee-900">¿Por qué elegir Café Dinorín?</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Feature 1 -->
+        <div class="bg-cream-50 p-8 rounded-2xl border border-cream-200 shadow-sm hover:shadow-md transition-shadow">
+          <div class="w-14 h-14 bg-coffee-800 rounded-2xl flex items-center justify-center text-gold-400 text-2xl mb-6 shadow-md">
+            <i class="fa-solid fa-mountain"></i>
+          </div>
+          <h3 class="font-serif-title text-xl font-bold text-coffee-900 mb-3">Origen de Altura</h3>
+          <p class="text-coffee-700 text-sm leading-relaxed">
+            Cultivado a más de 1,200 metros sobre el nivel del mar, obteniendo un desarrollo óptimo del grano y un perfil aromático intenso.
+          </p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="bg-cream-50 p-8 rounded-2xl border border-cream-200 shadow-sm hover:shadow-md transition-shadow">
+          <div class="w-14 h-14 bg-coffee-800 rounded-2xl flex items-center justify-center text-gold-400 text-2xl mb-6 shadow-md">
+            <i class="fa-solid fa-fire-burner"></i>
+          </div>
+          <h3 class="font-serif-title text-xl font-bold text-coffee-900 mb-3">Tueste Artesanal</h3>
+          <p class="text-coffee-700 text-sm leading-relaxed">
+            Cuidamos cada lote de manera individual para resaltar sus notas de caramelo, chocolate oscuro y frutos secos.
+          </p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="bg-cream-50 p-8 rounded-2xl border border-cream-200 shadow-sm hover:shadow-md transition-shadow">
+          <div class="w-14 h-14 bg-coffee-800 rounded-2xl flex items-center justify-center text-gold-400 text-2xl mb-6 shadow-md">
+            <i class="fa-solid fa-truck-fast"></i>
+          </div>
+          <h3 class="font-serif-title text-xl font-bold text-coffee-900 mb-3">Frescura Garantizada</h3>
+          <p class="text-coffee-700 text-sm leading-relaxed">
+            Mantenemos empaques con válvula de desgasificación para asegurar que recibas un grano con todo su aroma recién empacado.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="catalogo" class="py-20 bg-cream-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="bg-coffee-800 text-gold-400 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest inline-block mb-3">Nuestra Selección</span>
+        <h2 class="font-serif-title text-3xl sm:text-5xl font-bold text-coffee-950 mb-4">Catálogo Café Dinorín</h2>
+        <p class="text-coffee-700 text-base sm:text-lg">Elige la presentación ideal para tu hogar, oficina o negocio. Selecciona el tipo de molienda que prefieras.</p>
+      </div>
+
+      <!-- Grid de Productos -->
+      <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        
+        <!-- Producto 1: 500 g ($150) -->
+        <div class="bg-white rounded-3xl border border-cream-200 shadow-xl overflow-hidden flex flex-col justify-between transform hover:-translate-y-1 transition-transform duration-300">
+          <div>
+            <!-- Image & Tag Header -->
+            <div class="bg-coffee-900 p-8 text-cream-50 relative flex items-center justify-center overflow-hidden">
+              <div class="absolute inset-0 bg-gold-500/5"></div>
+              <span class="absolute top-4 right-4 bg-gold-500 text-coffee-950 text-xs font-bold px-3 py-1 rounded-full">Popular</span>
+              
+              <!-- Card Icon Art -->
+              <div class="text-center py-4">
+                <div class="w-24 h-24 rounded-full bg-coffee-800 border-2 border-gold-500/40 mx-auto flex items-center justify-center text-gold-400 text-4xl shadow-inner mb-3">
+                  <i class="fa-solid fa-box-archive"></i>
+                </div>
+                <h3 class="font-serif-title text-2xl font-bold text-cream-50">Café Dinorín 500 g</h3>
+                <p class="text-gold-400 text-sm font-medium">Presentación Mediana</p>
+              </div>
+            </div>
+
+            <!-- Content details -->
+            <div class="p-6 sm:p-8 space-y-6">
+              <div class="flex items-baseline justify-between border-b border-cream-200 pb-4">
+                <div>
+                  <span class="text-3xl font-extrabold text-coffee-900 font-serif-title">$150</span>
+                  <span class="text-xs text-coffee-600 font-semibold"> MXN</span>
+                </div>
+                <span class="text-xs text-emerald-700 bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded-lg font-bold">En Stock</span>
+              </div>
+
+              <p class="text-coffee-700 text-sm leading-relaxed">
+                Ideal para consumo personal o familiar semanal. Grano de selección especial con tueste equilibrado.
+              </p>
+
+              <!-- Grind Selector -->
+              <div class="space-y-2">
+                <label class="block text-xs font-bold uppercase tracking-wider text-coffee-800">Selecciona Molienda:</label>
+                <select id="grind-500g" class="w-full bg-cream-50 border border-cream-300 text-coffee-900 text-sm rounded-xl p-3 font-medium focus:ring-2 focus:ring-gold-500 outline-none">
+                  <option value="En Grano">En Grano (Tostado entero)</option>
+                  <option value="Molido Medio">Molido Medio (Cafetera de filtro / Goteo)</option>
+                  <option value="Molido Fino">Molido Fino (Espresso / Moka)</option>
+                  <option value="Molido Grueso">Molido Grueso (Prensa Francesa)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Add to cart button -->
+          <div class="p-6 sm:p-8 pt-0">
+            <button onclick="addToCart('Café Dinorín 500 g', 150, 'grind-500g')" class="w-full bg-coffee-800 hover:bg-coffee-900 text-gold-400 font-bold py-4 rounded-2xl shadow-lg hover:shadow-coffee-900/30 transition-all flex items-center justify-center gap-2">
+              <i class="fa-solid fa-cart-plus text-lg"></i>
+              <span>Agregar 500g por $150 MXN</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Producto 2: 1 kg ($300) -->
+        <div class="bg-white rounded-3xl border-2 border-gold-500 shadow-xl overflow-hidden flex flex-col justify-between transform hover:-translate-y-1 transition-transform duration-300 relative">
+          
+          <div class="absolute -right-12 top-6 bg-gold-500 text-coffee-950 font-bold text-[10px] uppercase tracking-widest py-1 px-12 rotate-45 shadow-md">
+            Mejor Valor
+          </div>
+
+          <div>
+            <!-- Image & Tag Header -->
+            <div class="bg-coffee-900 p-8 text-cream-50 relative flex items-center justify-center overflow-hidden">
+              <div class="absolute inset-0 bg-gold-500/10"></div>
+              
+              <!-- Card Icon Art -->
+              <div class="text-center py-4">
+                <div class="w-24 h-24 rounded-full bg-coffee-800 border-2 border-gold-500 mx-auto flex items-center justify-center text-gold-400 text-4xl shadow-inner mb-3">
+                  <i class="fa-solid fa-boxes-packing"></i>
+                </div>
+                <h3 class="font-serif-title text-2xl font-bold text-cream-50">Café Dinorín 1 kg</h3>
+                <p class="text-gold-400 text-sm font-medium">Presentación Grande / Familiar</p>
+              </div>
+            </div>
+
+            <!-- Content details -->
+            <div class="p-6 sm:p-8 space-y-6">
+              <div class="flex items-baseline justify-between border-b border-cream-200 pb-4">
+                <div>
+                  <span class="text-3xl font-extrabold text-coffee-900 font-serif-title">$300</span>
+                  <span class="text-xs text-coffee-600 font-semibold"> MXN</span>
+                </div>
+                <span class="text-xs text-gold-700 bg-gold-50 border border-gold-200 px-2.5 py-1 rounded-lg font-bold">Rendimiento Máximo</span>
+              </div>
+
+              <p class="text-coffee-700 text-sm leading-relaxed">
+                Empaque familiar de 1 Kilogramo. Máxima frescura y ahorro para verdaderos amantes del buen café diario.
+              </p>
+
+              <!-- Grind Selector -->
+              <div class="space-y-2">
+                <label class="block text-xs font-bold uppercase tracking-wider text-coffee-800">Selecciona Molienda:</label>
+                <select id="grind-1kg" class="w-full bg-cream-50 border border-cream-300 text-coffee-900 text-sm rounded-xl p-3 font-medium focus:ring-2 focus:ring-gold-500 outline-none">
+                  <option value="En Grano">En Grano (Tostado entero)</option>
+                  <option value="Molido Medio">Molido Medio (Cafetera de filtro / Goteo)</option>
+                  <option value="Molido Fino">Molido Fino (Espresso / Moka)</option>
+                  <option value="Molido Grueso">Molido Grueso (Prensa Francesa)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Add to cart button -->
+          <div class="p-6 sm:p-8 pt-0">
+            <button onclick="addToCart('Café Dinorín 1 kg', 300, 'grind-1kg')" class="w-full gold-gradient-bg hover:opacity-95 text-coffee-950 font-extrabold py-4 rounded-2xl shadow-lg hover:shadow-gold-500/30 transition-all flex items-center justify-center gap-2">
+              <i class="fa-solid fa-cart-plus text-lg"></i>
+              <span>Agregar 1 kg por $300 MXN</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <section id="pedido" class="py-20 coffee-gradient-bg text-cream-50 relative overflow-hidden">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <div class="text-center mb-12">
+        <span class="bg-gold-500/20 text-gold-400 border border-gold-500/30 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest inline-block mb-3">Pide Ahora</span>
+        <h2 class="font-serif-title text-3xl sm:text-4xl font-bold text-cream-50">Formulario de Pedido Directo</h2>
+        <p class="text-cream-200 text-sm sm:text-base mt-2">Completa tus datos para agendar tu pedido. Puedes enviarlo directamente a nuestro WhatsApp o confirmarlo en el sitio.</p>
+      </div>
+
+      <div class="bg-coffee-900/90 border border-gold-500/30 rounded-3xl p-6 sm:p-10 shadow-2xl backdrop-blur-md">
+        
+        <!-- Current Cart Summary inside Order Form -->
+        <div class="mb-8 p-4 rounded-2xl bg-coffee-800/80 border border-gold-500/20">
+          <div class="flex items-center justify-between mb-2">
+            <h4 class="text-gold-400 font-bold text-sm uppercase tracking-wider flex items-center gap-2">
+              <i class="fa-solid fa-list-check"></i> Resumen del Pedido
+            </h4>
+            <button onclick="toggleCartModal()" class="text-xs text-gold-400 underline hover:text-gold-300">Modificar Carrito</button>
+          </div>
+          <div id="order-form-summary" class="text-sm text-cream-200 space-y-1"><p class="italic text-cream-300/70">Tu carrito está vacío. Agrega productos desde el catálogo arriba.</p></div>
+        </div>
+
+        <!-- Form fields -->
+        <form id="checkout-form" onsubmit="handleFormSubmit(event)" class="space-y-6">
+          
+          <div class="grid md:grid-cols-2 gap-6">
+            <!-- Nombre Completo -->
+            <div>
+              <label for="customer-name" class="block text-xs font-bold uppercase tracking-wider text-gold-400 mb-2">
+                Nombre Completo <span class="text-red-400">*</span>
+              </label>
+              <div class="relative">
+                <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gold-500/60">
+                  <i class="fa-solid fa-user"></i>
+                </span>
+                <input type="text" id="customer-name" required="" placeholder="Ej. María Dinorín" class="w-full bg-coffee-950 border border-gold-500/30 rounded-xl py-3 pl-10 pr-4 text-cream-50 text-sm focus:border-gold-500 focus:ring-1 focus:ring-gold-500 outline-none">
+              </div>
+            </div>
+
+            <!-- Teléfono -->
+            <div>
+              <label for="customer-phone" class="block text-xs font-bold uppercase tracking-wider text-gold-400 mb-2">
+                Teléfono / WhatsApp <span class="text-red-400">*</span>
+              </label>
+              <div class="relative">
+                <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gold-500/60">
+                  <i class="fa-solid fa-phone"></i>
+                </span>
+                <input type="tel" id="customer-phone" required="" placeholder="Ej. 55 1234 5678" class="w-full bg-coffee-950 border border-gold-500/30 rounded-xl py-3 pl-10 pr-4 text-cream-50 text-sm focus:border-gold-500 focus:ring-1 focus:ring-gold-500 outline-none">
+              </div>
+            </div>
+          </div>
+
+          <!-- Dirección de Entrega -->
+          <div>
+            <label for="customer-address" class="block text-xs font-bold uppercase tracking-wider text-gold-400 mb-2">
+              Dirección Completa de Entrega <span class="text-red-400">*</span>
+            </label>
+            <div class="relative">
+              <span class="absolute top-3.5 left-0 pl-3.5 flex items-start pointer-events-none text-gold-500/60">
+                <i class="fa-solid fa-location-dot"></i>
+              </span>
+              <textarea id="customer-address" rows="3" required="" placeholder="Calle, Número, Colonia, Ciudad y Código Postal" class="w-full bg-coffee-950 border border-gold-500/30 rounded-xl py-3 pl-10 pr-4 text-cream-50 text-sm focus:border-gold-500 focus:ring-1 focus:ring-gold-500 outline-none"></textarea>
+            </div>
+          </div>
+
+          <!-- Notas opcionales -->
+          <div>
+            <label for="customer-notes" class="block text-xs font-bold uppercase tracking-wider text-gold-400 mb-2">
+              Notas adicionales (Opcional)
+            </label>
+            <input type="text" id="customer-notes" placeholder="Ej. Entregar en horario vespertino / Timbre 2B" class="w-full bg-coffee-950 border border-gold-500/30 rounded-xl py-3 px-4 text-cream-50 text-sm focus:border-gold-500 focus:ring-1 focus:ring-gold-500 outline-none">
+          </div>
+
+          <!-- Submit Buttons -->
+          <div class="pt-4 grid sm:grid-cols-2 gap-4">
+            <button type="button" onclick="sendOrderViaWhatsApp()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-4 rounded-xl shadow-lg transition-all flex items-center justify-center gap-2">
+              <i class="fa-brands fa-whatsapp text-xl"></i>
+              <span>Enviar por WhatsApp</span>
+            </button>
+
+            <button type="submit" class="w-full gold-gradient-bg hover:opacity-95 text-coffee-950 font-extrabold py-4 rounded-xl shadow-lg transition-all flex items-center justify-center gap-2">
+              <i class="fa-solid fa-check-circle text-xl"></i>
+              <span>Confirmar Pedido en Sitio</span>
+            </button>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+  </section>
+  <footer class="bg-coffee-950 text-cream-200 py-12 border-t border-gold-500/20 text-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-4 gap-8">
+      
+      <!-- Brand Info -->
+      <div class="space-y-4">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full border border-gold-500 flex items-center justify-center bg-coffee-800">
+            <i class="fa-solid fa-mug-hot text-gold-400"></i>
+          </div>
+          <span class="font-serif-title text-xl font-bold gold-gradient-text">Café Dinorín</span>
+        </div>
+        <p class="text-xs text-cream-200/70 leading-relaxed">
+          Café artesanal tostado con pasión. Directo de nuestras fincas de alta montaña a tu taza diaria.
+        </p>
+      </div>
+
+      <!-- Links -->
+      <div>
+        <h4 class="font-serif-title font-bold text-cream-50 mb-3 text-gold-400">Navegación</h4>
+        <ul class="space-y-2 text-xs">
+          <li><a href="#inicio" class="hover:text-gold-400 transition-colors">Inicio</a></li>
+          <li><a href="#nosotros" class="hover:text-gold-400 transition-colors">Acerca de Nosotros</a></li>
+          <li><a href="#catalogo" class="hover:text-gold-400 transition-colors">Productos y Precios</a></li>
+          <li><a href="#pedido" class="hover:text-gold-400 transition-colors">Realizar Pedido</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h4 class="font-serif-title font-bold text-cream-50 mb-3 text-gold-400">Contacto</h4>
+        <ul class="space-y-2 text-xs">
+          <li class="flex items-center gap-2"><i class="fa-solid fa-phone text-gold-500"></i> +52 (55) 1234-5678</li>
+          <li class="flex items-center gap-2"><i class="fa-solid fa-envelope text-gold-500"></i> contacto@cafedinorin.com</li>
+          <li class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-gold-500"></i> Veracruz, México</li>
+        </ul>
+      </div>
+
+      <!-- Guarantee -->
+      <div>
+        <h4 class="font-serif-title font-bold text-cream-50 mb-3 text-gold-400">Calidad Dinorín</h4>
+        <p class="text-xs text-cream-200/70">
+          Garantía de sabor y frescura. Envíos a toda la República Mexicana con empaque termosellado de alta protección.
+        </p>
+      </div>
+
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-6 border-t border-gold-500/10 text-center text-xs text-cream-200/50">
+      © 2026 Café Dinorín. Todos los derechos reservados. Diseñado en Tonos Café, Crema y Dorado.
+    </div>
+  </footer>
+  <script src="script.js"></script>
 </body>
 </html>
