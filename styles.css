@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: #FAF6F0;
+  color: #231209;
+}
+
+.font-serif-title {
+  font-family: 'Playfair Display', serif;
+}
+
+.gold-gradient-text {
+  background: linear-gradient(135deg, #FFE28A 0%, #D4AF37 50%, #946B00 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-gradient-bg {
+  background: linear-gradient(135deg, #D4AF37 0%, #B8860B 100%);
+}
+
+.coffee-gradient-bg {
+  background: linear-gradient(180deg, #231209 0%, #331B0E 100%);
+}
